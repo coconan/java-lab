@@ -8,13 +8,18 @@
     <artifactId>logging</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <dependencies>
+	<dependencies>
         <dependency>
-            <groupId>io.lettuce</groupId>
-            <artifactId>lettuce-core</artifactId>
-            <version>6.1.8.RELEASE</version>
-        </dependency>
-    </dependencies>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.9</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+		</dependency>
+	</dependencies>
 
     <build>
         <plugins>
@@ -31,7 +36,7 @@
                 <configuration>
                   <archive>
                         <manifest>
-                            <mainClass>me.coconan.logging.Example</mainClass>
+                            <mainClass>me.coconan.logging.slf4j.Example</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
