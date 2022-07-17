@@ -31,7 +31,7 @@ public class Tutorial {
 
     private static Connection getConnection() throws Exception {
         //Class.forName("com.mysql.cj.jdbc.driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "hello123");
+        return DriverManager.getConnection("jdbc:mysql://localhost/test?useSSL=false", "root", "hello123");
     }
 
     private static void writeResultSet(ResultSet resultSet) throws Exception {
