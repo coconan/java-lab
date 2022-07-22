@@ -1,8 +1,11 @@
 target
 .idea
+
 .vscode
-.project
-.classpath
-.settings
+
 mods
 
+bin
+.settings
+.project
+.classpath
