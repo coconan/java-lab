@@ -12,19 +12,43 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 
+import java.sql.*;
 import java.util.Map;
 import javax.sql.DataSource;
 
 public class MyBatisUtil {
 	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	public static final String URL = "jdbc:mysql://localhost:3306/test?useSSL=false";
-	public static final String USERNAME = "root";
-	public static final String PASSWORD = "hello123";
 	private static SqlSessionFactory sqlSessionFactory;
 
 	public static SqlSessionFactory buildqlSessionFactory() {
-		DataSource dataSource = new PooledDataSource(DRIVER, URL, USERNAME, PASSWORD);
+		MySQLContainer mysql = new MySQLContainer("mysql:5.7");
+		mysql.start();
+		try (Connection conn = DriverManager.getConnection(mysql.getJdbcUrl(), mysql.getUsername(), mysql.getPassword())) {
+            try (Statement stmt = conn.createStatement()) {
+				stmt.execute("drop table if exists person");
+				stmt.execute("create table if not exists person (" +
+						"personId int primary key auto_increment," +
+						"name varchar(30)" +
+						")");
+				
+				stmt.execute("drop table if exists adddress");
+				stmt.execute("create table if not exists address (" +
+						"addressId int primary key auto_increment," +
+						"personId int," +
+						"streetAddress varchar(30)" +
+						")");
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		DataSource dataSource = new PooledDataSource(DRIVER, mysql.getJdbcUrl(), mysql.getUsername(), mysql.getPassword());
 		Environment environment = new Environment("Development", new JdbcTransactionFactory(), dataSource);
 		Configuration configuration = new Configuration(environment);
 		configuration.addMapper(PersonMapper.class);
@@ -57,6 +81,10 @@ public class MyBatisUtil {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			PersonMapper pm = session.getMapper(PersonMapper.class);
 
+			System.out.println("\nsavePerson:");
+			pm.save(new Person(1, "alex"));
+			pm.save(new Person(2, "brian"));
+
 			System.out.println("\ngetAllPerson:");
 			Map<Integer, Person> personMap = pm.getAllPerson();
 			if (personMap.size() >= 2) {
@@ -71,7 +99,7 @@ public class MyBatisUtil {
 
 			System.out.println("\ngetPersonById:");
 			Person brian = pm.getPersonById(1);
-			System.out.println(brian.getAddresses());
+			System.out.println(brian.getName());
 			for (Address address : brian.getAddresses()) {
 				System.out.println(address.getStreetAddress());
 			}
