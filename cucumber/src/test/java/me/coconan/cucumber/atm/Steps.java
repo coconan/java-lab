@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class Steps {
 
-    class Money {
+    static class Money {
         private int dollars;
         private int cents;
         Money(int dollars, int cents) {
@@ -32,19 +32,6 @@ public class Steps {
         }
     }
 
-    class MoneyConverter implements Transformer<Money> {
-        public Money transform(String amount) {
-            Pattern pattern = Pattern.compile("^[^\\d]*([\\d]+)\\.([\\d][\\d])$");
-            Matcher matcher = pattern.matcher(amount);
-
-            matcher.find();
-            int dollars = Integer.parseInt(matcher.group(1));
-            int cents = Integer.parseInt(matcher.group(2));
-
-            return new Money(dollars, cents);
-        }
-    }
-
     class Account {
         private Money balance;
 
@@ -55,11 +42,6 @@ public class Steps {
         public Money getBalance() {
             return balance;
         }
-    }
-
-    @ParameterType(".*")
-    public Money money(String amount) {
-        return new MoneyConverter().transform(amount);
     }
 
     @Given("I have deposited {money} in my account")
