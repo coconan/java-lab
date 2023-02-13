@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 public class Types {
 
-    static class MoneyConverter implements Transformer<Steps.Money> {
-        public Steps.Money transform(String amount) {
+    static class MoneyConverter implements Transformer<Money> {
+        public Money transform(String amount) {
             Pattern pattern = Pattern.compile("^[^\\d]*([\\d]+)\\.([\\d][\\d])$");
             Matcher matcher = pattern.matcher(amount);
 
@@ -17,11 +17,11 @@ public class Types {
             int dollars = Integer.parseInt(matcher.group(1));
             int cents = Integer.parseInt(matcher.group(2));
 
-            return new Steps.Money(dollars, cents);
+            return new Money(dollars, cents);
         }
     }
     @ParameterType(".*")
-    public Steps.Money money(String amount) {
+    public Money money(String amount) {
         return new MoneyConverter().transform(amount);
     }
 }
