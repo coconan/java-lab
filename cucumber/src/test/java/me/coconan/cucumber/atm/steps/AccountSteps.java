@@ -1,6 +1,7 @@
 package me.coconan.cucumber.atm.steps;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import me.coconan.cucumber.atm.Money;
 import me.coconan.cucumber.atm.support.KnowsTheDomain;
 
@@ -13,10 +14,13 @@ public class AccountSteps {
         this.helper = helper;
     }
 
-    @Given("I have deposited {money} in my account")
+    @Given("I have credited {money} in my account")
     public void iHaveDeposited$InMyAccount(Money amount) {
-        helper.getMyAccount().deposit(amount);
+        helper.getMyAccount().credit(amount);
+    }
 
+    @Then("the balance of my account should be {money}")
+    public void theBalanceOfMyAccountShouldBe(Money amount) {
         assertEquals("Incorrect account balance -", amount, helper.getMyAccount().getBalance());
     }
 }

@@ -13,7 +13,7 @@ public class TellerSteps {
 
     @When("I withdraw ${int}")
     public void iRequest$(Integer amount) {
-        Teller teller = new Teller(helper.getCashSlot());
+        Teller teller = helper.getTeller();
         teller.withdrawFrom(helper.getMyAccount(), amount);
     }
 }
