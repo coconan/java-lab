@@ -3,6 +3,7 @@ package me.coconan.cucumber.atm;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.javalite.activejdbc.Base;
 
 public class AtmServer {
     private final Server server;
@@ -29,6 +30,10 @@ public class AtmServer {
     }
 
     public static void main(String[] args) throws Exception {
+        Base.open(
+                "com.mysql.jdbc.Driver",
+                "jdbc:mysql://dev/bank",
+                "root", "root");
         new AtmServer(9988, new CashSlot(), new Account()).start();
     }
 }

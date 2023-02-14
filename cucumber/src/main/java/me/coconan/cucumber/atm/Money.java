@@ -1,5 +1,8 @@
 package me.coconan.cucumber.atm;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Money {
     private int dollars;
     private int cents;
@@ -21,11 +24,6 @@ public class Money {
 
         Money that = (Money) obj;
         return dollars == that.dollars && cents == that.cents;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("$%d.%02d", dollars, cents);
     }
 
     public Money add(Money amount) {
@@ -50,5 +48,20 @@ public class Money {
         }
 
         return new Money(newDollars, newCents);
+    }
+    @Override
+    public String toString() {
+        return String.format("$%d.%02d", dollars, cents);
+    }
+
+    public static Money from(String amount) {
+        Pattern pattern = Pattern.compile("^[^\\d]*([\\d]+)\\.([\\d][\\d])$");
+        Matcher matcher = pattern.matcher(amount);
+
+        matcher.find();
+        int dollars = Integer.parseInt(matcher.group(1));
+        int cents = Integer.parseInt(matcher.group(2));
+
+        return new Money(dollars, cents);
     }
 }

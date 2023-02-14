@@ -1,17 +1,20 @@
 package me.coconan.cucumber.atm;
 
-public class Account {
-    private Money balance = new Money();
+import org.javalite.activejdbc.Model;
+
+public class Account extends Model {
+    private TransactionQueue queue = new TransactionQueue();
 
     public void credit(Money amount) {
-        balance = balance.add(amount);
+        queue.write("+" + amount);
     }
 
     public void debit(int dollars) {
-        balance = balance.minus(new Money(dollars, 0));
-    }
-    public Money getBalance() {
-        return balance;
+        Money amount = new Money(dollars, 0);
+        queue.write("-" + amount);
     }
 
+    public Money getBalance() {
+        return BalanceStore.getBalance();
+    }
 }

@@ -20,7 +20,15 @@ public class AccountSteps {
     }
 
     @Then("the balance of my account should be {money}")
-    public void theBalanceOfMyAccountShouldBe(Money amount) {
+    public void theBalanceOfMyAccountShouldBe(Money amount) throws InterruptedException {
+        int timeoutMilliSecs = 3000;
+        int pollIntervalMilliSecs = 100;
+
+        while (!helper.getMyAccount().getBalance().equals(amount) && timeoutMilliSecs > 0) {
+            Thread.sleep(pollIntervalMilliSecs);
+            timeoutMilliSecs -= pollIntervalMilliSecs;
+        }
+
         assertEquals("Incorrect account balance -", amount, helper.getMyAccount().getBalance());
     }
 }
