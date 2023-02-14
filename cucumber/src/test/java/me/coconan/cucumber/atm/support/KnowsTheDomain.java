@@ -15,7 +15,8 @@ public class KnowsTheDomain {
 
     public Account getMyAccount() {
         if (myAccount == null) {
-            myAccount = new Account();
+            myAccount = new Account(1234);
+            myAccount.saveIt();
         }
 
         return myAccount;

@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.javalite</groupId>
             <artifactId>activejdbc</artifactId>
-            <version>1.4.1</version>
+            <version>1.4.13</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -126,6 +126,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>6.0.8</version>
         </dependency>
     </dependencies>
 
@@ -146,32 +151,12 @@
             <plugin>
                 <groupId>org.javalite</groupId>
                 <artifactId>activejdbc-instrumentation</artifactId>
-                <version>1.4.1</version>
+                <version>1.4.13</version>
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>instrument</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.0.5</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/bank_schema.xml</changeLogFile>
-                    <driver>com.mysql.jdbc.Driver</driver>
-                    <url>jdbc:mysql://dev/bank</url>
-                    <username>root</username>
-                    <password>root</password>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
                         </goals>
                     </execution>
                 </executions>

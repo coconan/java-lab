@@ -34,6 +34,6 @@ public class AtmServer {
                 "com.mysql.jdbc.Driver",
                 "jdbc:mysql://dev/bank",
                 "root", "root");
-        new AtmServer(9988, new CashSlot(), new Account()).start();
+        new AtmServer(9988, new CashSlot(), new Account(1234)).start();
     }
 }
