@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class AtmServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html");
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().println(

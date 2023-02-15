@@ -1,21 +1,21 @@
 package me.coconan.cucumber.atm.steps;
 
 import io.cucumber.java.en.When;
+import me.coconan.cucumber.atm.Account;
 import me.coconan.cucumber.atm.Teller;
 import me.coconan.cucumber.atm.support.AtmUserInterface;
-import me.coconan.cucumber.atm.support.TestAccounts;
 
 public class TellerSteps {
     Teller teller;
-    TestAccounts testAccounts;
+    Account account;
 
-    public TellerSteps(AtmUserInterface teller, TestAccounts testAccounts) {
+    public TellerSteps(AtmUserInterface teller, Account account) {
         this.teller = teller;
-        this.testAccounts = testAccounts;
+        this.account = account;
     }
 
     @When("I withdraw ${int}")
     public void iRequest$(Integer amount) {
-        teller.withdrawFrom(testAccounts.getTestAccount(), amount);
+        teller.withdrawFrom(account, amount);
     }
 }
