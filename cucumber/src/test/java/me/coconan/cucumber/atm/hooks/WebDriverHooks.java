@@ -2,23 +2,23 @@ package me.coconan.cucumber.atm.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import me.coconan.cucumber.atm.support.KnowsTheDomain;
+import me.coconan.cucumber.atm.support.MyWebDriver;
 import org.openqa.selenium.OutputType;
 
 public class WebDriverHooks {
-    private final KnowsTheDomain helper;
+    private final MyWebDriver myWebDriver;
 
-    public WebDriverHooks(KnowsTheDomain helper) {
-        this.helper = helper;
+    public WebDriverHooks(MyWebDriver myWebDriver) {
+        this.myWebDriver = myWebDriver;
     }
 
     @After
     public void finish(Scenario scenario) {
         try {
-            byte[] screenshot = helper.getWebDriver().getScreenshotAs(OutputType.BYTES);
+            byte[] screenshot = myWebDriver.getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "form");
         } finally {
-            helper.getWebDriver().close();
+            myWebDriver.close();
         }
     }
 }

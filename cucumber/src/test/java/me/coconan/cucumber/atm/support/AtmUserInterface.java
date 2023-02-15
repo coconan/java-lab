@@ -4,20 +4,19 @@ import me.coconan.cucumber.atm.Account;
 import me.coconan.cucumber.atm.Teller;
 import me.coconan.cucumber.atm.hooks.ServerHooks;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class AtmUserInterface implements Teller {
-    private final EventFiringWebDriver webDriver;
+    private final MyWebDriver myWebDriver;
 
-    public AtmUserInterface(EventFiringWebDriver webDriver) {
-        this.webDriver = webDriver;
+    public AtmUserInterface(MyWebDriver myWebDriver) {
+        this.myWebDriver = myWebDriver;
     }
 
     @Override
     public void withdrawFrom(Account account, int dollars) {
-        webDriver.get("http://localhost:" + ServerHooks.PORT);
-        webDriver.findElement(By.id("amount"))
+        myWebDriver.get("http://localhost:" + ServerHooks.PORT);
+        myWebDriver.findElement(By.id("amount"))
                 .sendKeys(String.valueOf(dollars));
-        webDriver.findElement(By.id("withdraw")).click();
+        myWebDriver.findElement(By.id("withdraw")).click();
     }
 }

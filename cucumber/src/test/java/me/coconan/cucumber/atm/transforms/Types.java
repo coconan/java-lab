@@ -1,7 +1,8 @@
-package me.coconan.cucumber.atm;
+package me.coconan.cucumber.atm.transforms;
 
 import io.cucumber.cucumberexpressions.Transformer;
 import io.cucumber.java.ParameterType;
+import me.coconan.cucumber.atm.Money;
 
 public class Types {
 
