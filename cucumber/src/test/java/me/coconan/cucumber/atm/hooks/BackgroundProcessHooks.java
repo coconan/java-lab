@@ -22,7 +22,11 @@ public class BackgroundProcessHooks {
             }
 
             TransactionProcessor processor = new TransactionProcessor();
-            processor.process();
+            try {
+                processor.process();
+            } catch (InterruptedException e) {
+                System.out.println("TransactionProcessor stopped");
+            }
         });
 
         transactionProcessThread.start();

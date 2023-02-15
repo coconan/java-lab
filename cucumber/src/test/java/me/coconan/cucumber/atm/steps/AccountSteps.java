@@ -14,7 +14,7 @@ public class AccountSteps {
         this.account = account;
     }
 
-    @Given("I have credited {money} in my account")
+    @Given("my account has been credited with {money}")
     public void iHaveDeposited$InMyAccount(Money amount) {
         account.credit(amount);
     }

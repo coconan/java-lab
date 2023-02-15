@@ -1,9 +1,11 @@
 package me.coconan.cucumber.atm;
 
+import static java.lang.Thread.sleep;
+
 public class TransactionProcessor {
     private TransactionQueue queue = new TransactionQueue();
 
-    public void process() {
+    public void process() throws InterruptedException {
         do {
             String message = queue.read();
             if (message.length() > 0) {
@@ -17,6 +19,7 @@ public class TransactionProcessor {
                     account.setBalance(account.getBalance().minus(transactionAmount));
                 }
             }
+            Thread.sleep(100);
         } while (true);
     }
 

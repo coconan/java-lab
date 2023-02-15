@@ -29,6 +29,7 @@ public class TransactionQueue {
 
         try (PrintWriter writer = new PrintWriter(messageFilePath, StandardCharsets.UTF_8)) {
             writer.println(transaction);
+            writer.flush();
             nextId++;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -45,8 +46,10 @@ public class TransactionQueue {
             try (Scanner scanner = new Scanner(messages[0])) {
                 message = scanner.nextLine();
                 messages[0].delete();
-            } catch (FileNotFoundException e) {
+            } catch (Exception e) {
                 // File has gone away!
+                e.printStackTrace();
+                System.err.println(messages[0].toString());
             }
         }
 

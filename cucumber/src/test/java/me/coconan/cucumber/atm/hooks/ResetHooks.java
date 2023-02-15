@@ -12,6 +12,7 @@ public class ResetHooks {
     public ResetHooks(MyDataSource myDataSource) {
         this.myDataSource = myDataSource;
     }
+
     @Before
     public void reset() {
         Flyway flyway = Flyway.configure()
