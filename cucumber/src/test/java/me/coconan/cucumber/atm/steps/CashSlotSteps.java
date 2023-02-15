@@ -1,19 +1,19 @@
 package me.coconan.cucumber.atm.steps;
 
 import io.cucumber.java.en.Then;
-import me.coconan.cucumber.atm.support.KnowsTheCashSlot;
+import me.coconan.cucumber.atm.CashSlot;
 
 import static org.junit.Assert.assertEquals;
 
 public class CashSlotSteps {
-    KnowsTheCashSlot cashSlotHelper;
+    CashSlot cashSlot;
 
-    public CashSlotSteps(KnowsTheCashSlot cashSlotHelper) {
-        this.cashSlotHelper = cashSlotHelper;
+    public CashSlotSteps(CashSlot cashSlot) {
+        this.cashSlot = cashSlot;
     }
 
     @Then("${int} should be dispensed")
     public void $ShouldBeDispensed(int dollars) {
-        assertEquals("Incorrect amount dispensed - ", dollars, cashSlotHelper.getCashSlot().getContents());
+        assertEquals("Incorrect amount dispensed - ", dollars, cashSlot.getContents());
     }
 }
