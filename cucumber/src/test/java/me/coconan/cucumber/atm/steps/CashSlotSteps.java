@@ -22,4 +22,9 @@ public class CashSlotSteps {
     public void $ShouldBeDispensed(int dollars) {
         assertEquals("Incorrect amount dispensed - ", dollars, cashSlot.getContents());
     }
+
+    @Given("the ATM contains ${int}")
+    public void theATMContains$(int dollars) {
+        cashSlot.load(dollars);
+    }
 }
