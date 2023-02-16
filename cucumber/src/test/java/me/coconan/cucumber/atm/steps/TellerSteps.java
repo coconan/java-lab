@@ -11,6 +11,8 @@ public class TellerSteps {
     AtmUserInterface teller;
     Account account;
 
+    Integer someAmount = 20;
+
     public TellerSteps(AtmUserInterface teller, Account account) {
         this.teller = teller;
         this.account = account;
@@ -19,6 +21,11 @@ public class TellerSteps {
     @When("I withdraw ${int}")
     public void iRequest$(Integer amount) {
         teller.withdrawFrom(account, amount);
+    }
+
+    @When("I request some of my money")
+    public void iRequestSomeOfMyMoney() {
+        iRequest$(someAmount);
     }
 
     @Then("I should see an out-of-order message")

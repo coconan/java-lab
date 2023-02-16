@@ -10,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 public class AccountSteps {
     Account account;
 
+    Money someMoney = new Money(100, 0);
+
     public AccountSteps(Account account) {
         this.account = account;
     }
@@ -17,6 +19,11 @@ public class AccountSteps {
     @Given("my account has been credited with {money}")
     public void iHaveDeposited$InMyAccount(Money amount) {
         account.credit(amount);
+    }
+
+    @Given("my account is in credit")
+    public void myAccountIsInCredit() {
+        account.credit(someMoney);
     }
 
     @Then("the balance of my account should be {money}")
@@ -30,5 +37,10 @@ public class AccountSteps {
         }
 
         assertEquals("Incorrect account balance -", amount, account.getBalance());
+    }
+
+    @Then("the balance of my account should not be changed")
+    public void theBalanceOfMyAccountShouldNotBeChanged() throws InterruptedException {
+        theBalanceOfMyAccountShouldBe(someMoney);
     }
 }
