@@ -20,6 +20,10 @@
           lazy-init="true" scope="cucumber-glue" />
 
     <bean class="me.coconan.cucumber.atm.support.MyWebDriver" id="myWebDriver"
-          scope="cucumber-glue" destroy-method="close"/>
+          destroy-method="quit">
+        <constructor-arg>
+            <bean class="org.openqa.selenium.chrome.ChromeDriver" />
+        </constructor-arg>
+    </bean>
     <bean class="me.coconan.cucumber.atm.support.MyDataSource" scope="cucumber-glue"/>
 </beans>

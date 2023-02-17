@@ -14,11 +14,7 @@ public class WebDriverHooks {
 
     @After
     public void finish(Scenario scenario) {
-        try {
-            byte[] screenshot = myWebDriver.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "form");
-        } finally {
-            myWebDriver.close();
-        }
+        byte[] screenshot = myWebDriver.getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenshot, "image/png", "form");
     }
 }

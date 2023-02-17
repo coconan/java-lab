@@ -8,7 +8,7 @@ public class MyWebDriver extends EventFiringWebDriver {
         System.setProperty("webdriver.chrome.driver", "chromedriver");
     }
 
-    public MyWebDriver() {
-        super(new ChromeDriver());
+    public MyWebDriver(ChromeDriver chromeDriver) {
+        super(chromeDriver);
     }
 }
