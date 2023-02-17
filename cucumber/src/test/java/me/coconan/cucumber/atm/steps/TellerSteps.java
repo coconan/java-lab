@@ -28,6 +28,11 @@ public class TellerSteps {
         iRequest$(someAmount);
     }
 
+    @When("I type ${int}")
+    public void iType$(int amount) {
+        teller.type(amount);
+    }
+
     @Then("I should see an out-of-order message")
     public void iShouldSeeAnOutOfOrderMessage() {
         assertTrue("Expected error message not displayed", teller.isDisplaying("Out of order"));

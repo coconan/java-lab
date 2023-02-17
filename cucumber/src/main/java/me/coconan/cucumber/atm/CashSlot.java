@@ -20,4 +20,8 @@ public class CashSlot {
             throw new RuntimeException("Insufficient ATM funds");
         }
     }
+
+    public boolean canDispense(int amount) {
+        return amount <= available;
+    }
 }
