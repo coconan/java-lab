@@ -11,9 +11,8 @@
 
     <context:component-scan base-package="me.coconan.cucumber.atm" />
 
-    <bean class="me.coconan.cucumber.atm.support.AtmUserInterface" scope="cucumber-glue" >
-        <constructor-arg ref="myWebDriver"/>
-    </bean>
+    <bean class="me.coconan.cucumber.atm.support.AtmInterfaceFactory" factory-method="createAtmInterface"
+          lazy-init="true" scope="cucumber-glue" />
     <bean class="me.coconan.cucumber.atm.support.TestCashSlot" scope="cucumber-glue" />
 
     <bean class="me.coconan.cucumber.atm.support.AccountFactory" factory-method="createTestAccount"

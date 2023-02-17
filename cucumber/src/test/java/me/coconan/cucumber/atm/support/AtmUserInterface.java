@@ -6,19 +6,16 @@ import me.coconan.cucumber.atm.hooks.ServerHooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.util.List;
 
-public class AtmUserInterface implements Teller {
-    private final MyWebDriver myWebDriver;
-
-    public AtmUserInterface(MyWebDriver myWebDriver) {
-        this.myWebDriver = myWebDriver;
-    }
+public class AtmUserInterface implements AtmInterface {
+    @Autowired
+    private MyWebDriver myWebDriver;
 
     @Override
     public void withdrawFrom(Account account, int dollars) {

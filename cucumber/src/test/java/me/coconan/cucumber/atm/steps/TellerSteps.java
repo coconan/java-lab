@@ -3,17 +3,18 @@ package me.coconan.cucumber.atm.steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import me.coconan.cucumber.atm.Account;
+import me.coconan.cucumber.atm.support.AtmInterface;
 import me.coconan.cucumber.atm.support.AtmUserInterface;
 
 import static org.junit.Assert.assertTrue;
 
 public class TellerSteps {
-    AtmUserInterface teller;
+    AtmInterface teller;
     Account account;
 
     Integer someAmount = 20;
 
-    public TellerSteps(AtmUserInterface teller, Account account) {
+    public TellerSteps(AtmInterface teller, Account account) {
         this.teller = teller;
         this.account = account;
     }
