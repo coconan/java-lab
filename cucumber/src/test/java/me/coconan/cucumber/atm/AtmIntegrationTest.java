@@ -11,4 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 @CucumberContextConfiguration
 @ContextConfiguration(locations= "/cucumber.xml")
 public class AtmIntegrationTest {
+    static {
+        System.setProperty("cucumber.environment", "DEVELOPMENT");
+    }
 }
