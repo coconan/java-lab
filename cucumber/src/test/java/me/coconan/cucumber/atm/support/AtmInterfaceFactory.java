@@ -1,10 +1,18 @@
 package me.coconan.cucumber.atm.support;
 
 public class AtmInterfaceFactory {
-    public static AtmInterface createAtmInterface() {
-        String cucumberEnvironment = System.getProperty("cucumber.environment");
+    private static boolean bypassTellerUI = false;
 
-        if (cucumberEnvironment != null && cucumberEnvironment.equals("DEVELOPMENT")) {
+    public static void reset() {
+        bypassTellerUI = false;
+    }
+
+    public static  void bypassTellerUI() {
+        bypassTellerUI = true;
+    }
+
+    public static AtmInterface createAtmInterface() {
+        if (bypassTellerUI) {
             return new AtmProgrammaticInterface();
         } else {
             return new AtmUserInterface();

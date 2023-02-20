@@ -2,6 +2,7 @@ package me.coconan.cucumber.atm.hooks;
 
 import io.cucumber.java.Before;
 import me.coconan.cucumber.atm.TransactionQueue;
+import me.coconan.cucumber.atm.support.AtmInterfaceFactory;
 import me.coconan.cucumber.atm.support.MyDataSource;
 import org.flywaydb.core.Flyway;
 import org.javalite.activejdbc.Base;
@@ -13,7 +14,7 @@ public class ResetHooks {
         this.myDataSource = myDataSource;
     }
 
-    @Before
+    @Before(order = 1)
     public void reset() {
         Flyway flyway = Flyway.configure()
                 .dataSource(myDataSource)
@@ -27,5 +28,7 @@ public class ResetHooks {
             Base.open(myDataSource);
         }
         TransactionQueue.clear();
+
+        AtmInterfaceFactory.reset();
     }
 }
