@@ -18,7 +18,7 @@
     <bean class="me.coconan.cucumber.atm.support.AccountFactory" factory-method="createTestAccount"
           lazy-init="true" scope="cucumber-glue" />
 
-    <bean class="me.coconan.cucumber.atm.support.MyWebDriver" id="myWebDriver"
+    <bean class="me.coconan.cucumber.atm.support.MyWebDriver" id="myWebDriver" lazy-init="true"
           destroy-method="quit">
         <constructor-arg>
             <bean class="org.openqa.selenium.chrome.ChromeDriver" />

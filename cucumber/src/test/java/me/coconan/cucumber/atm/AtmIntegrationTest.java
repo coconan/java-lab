@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:Feature/atm", plugin = {"pretty", "html:out.html"}, snippets = CucumberOptions.SnippetType.CAMELCASE)
+@CucumberOptions(tags="@bypass_teller_ui", glue="me.coconan.cucumber.atm", features = "classpath:Feature/atm", plugin = {"pretty", "html:out.html"}, snippets = CucumberOptions.SnippetType.CAMELCASE)
 @CucumberContextConfiguration
 @ContextConfiguration(locations= "/cucumber.xml")
 public class AtmIntegrationTest {
