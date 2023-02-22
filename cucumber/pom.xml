@@ -72,6 +72,36 @@
             <artifactId>httpcore</artifactId>
             <version>4.4.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.3.0</version>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -186,5 +216,7 @@
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
+        <jetty.version>9.2.0.M0</jetty.version>
+        <jersey.version>1.8</jersey.version>
     </properties>
 </project>
