@@ -1,5 +1,6 @@
 package me.coconan.cucumber.fruit;
 
+import com.google.gson.JsonParser;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -37,6 +38,6 @@ public class RestSteps {
     @Then("the response should be JSON:")
     public void theResponseShouldBeJSON(String jsonExpected) {
         assertEquals("Incorrect JSON representation.",
-                jsonExpected, response.getEntity(String.class));
+                JsonParser.parseString(jsonExpected), JsonParser.parseString(response.getEntity(String.class)));
     }
 }
