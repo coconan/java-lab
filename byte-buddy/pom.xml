@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.coconan</groupId>
-    <artifactId>mybatis</artifactId>
-    <name>mybatis</name>
+    <artifactId>byte-buddy</artifactId>
+    <name>byte-buddy</name>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
@@ -15,33 +15,9 @@
             <version>${mysql-connector.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.8.1</version>
-            <!-- <scope>test</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>1.17.5</version>
-            <!-- <scope>test</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>mysql</artifactId>
-            <version>1.17.5</version>
-            <!-- <scope>test</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>1.17.5</version>
-            <!-- <scope>test</scope> -->
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
@@ -120,7 +96,6 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <mysql-connector.version>8.0.29</mysql-connector.version>
-        <mybatis.version>3.2.2</mybatis.version>
         <java.version>11</java.version>
         <plugin.jar.version>3.2.0</plugin.jar.version>
         <byte-buddy.version>1.11.12</byte-buddy.version>
