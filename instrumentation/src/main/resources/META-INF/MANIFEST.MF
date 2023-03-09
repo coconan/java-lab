@@ -1,0 +1,5 @@
+Agent-Class: me.coconan.instrumentation.agent.MyInstrumentationAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Premain-Class: me.coconan.instrumentation.agent.MyInstrumentationAgent
+Main-Class: me.coconan.instrumentation.application.Launcher
