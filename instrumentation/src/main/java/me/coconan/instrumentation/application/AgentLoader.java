@@ -15,14 +15,14 @@ public class AgentLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(AgentLoader.class);
 
     public static void run(String[] args) {
-        String agentFilePath = "/home/coconan/enduring-patience/java-lab/instrumentation/target/instrumentation-1.0.0-SNAPSHOT-jar-with-dependencies.jar";
+        String agentFilePath = "/home/coconan/enduring-patience/java-lab/instrumentation/target/instrumentation-1.0.0-SNAPSHOT-agent.jar";
         String applicationName = "MyAtmApplication";
 
         // iterate all jvms and ge the first one that matches our application name
         Optional<String> jvmProcessOpt = Optional.ofNullable(VirtualMachine.list()
                 .stream()
                 .filter(jvm -> {
-                    LOGGER.info("jvm: {}", jvm.displayName());
+                    LOGGER.info("jvm: {} {}", jvm.id(), jvm.displayName());
 
                     return jvm.displayName().contains(applicationName);
                 })

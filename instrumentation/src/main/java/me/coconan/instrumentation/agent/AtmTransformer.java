@@ -35,6 +35,7 @@ public class AtmTransformer implements ClassFileTransformer {
             LOGGER.info("[Agent] Transforming class MyAtm");
             try {
                 ClassPool cp = ClassPool.getDefault();
+                cp.insertClassPath(new ClassClassPath(AtmTransformer.class));
                 CtClass cc = cp.get(targetClassName);
                 CtMethod m = cc.getDeclaredMethod(WITHDRAW_MONEY_METHOD);
                 m.addLocalVariable("startTime", CtClass.longType);

@@ -44,6 +44,7 @@
                         <manifest>
                             <mainClass>me.coconan.instrumentation.application.Launcher</mainClass>
                         </manifest>
+                      <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>

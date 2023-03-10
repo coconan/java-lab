@@ -15,6 +15,13 @@ public class MyInstrumentationAgent {
         transformClass(className, inst);
     }
 
+    public static void agentmain(String agentArgs, Instrumentation inst) {
+        LOGGER.info("[Agent] In agentmain method");
+
+        String className = "me.coconan.instrumentation.application.MyAtm";
+        transformClass(className, inst);
+    }
+
     private static void transformClass(String className, Instrumentation instrumentation) {
         Class<?> targetCls = null;
         ClassLoader targetClassLoader = null;
@@ -25,7 +32,7 @@ public class MyInstrumentationAgent {
             transform(targetCls, targetClassLoader, instrumentation);
             return;
         } catch (Exception e) {
-            LOGGER.error("class [{}] not found with Class.forName");
+            LOGGER.error("class [{}] not found with Class.forName", className);
         }
 
         for (Class<?> clazz : instrumentation.getAllLoadedClasses()) {
