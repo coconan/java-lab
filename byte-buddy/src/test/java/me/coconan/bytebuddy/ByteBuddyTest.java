@@ -1,13 +1,20 @@
 package me.coconan.bytebuddy;
 
 import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.agent.ByteBuddyAgent;
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
+import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
 import net.bytebuddy.implementation.FixedValue;
 import net.bytebuddy.implementation.MethodDelegation;
-import net.bytebuddy.matcher.ElementMatchers;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ByteBuddyTest {
     @Test
@@ -51,6 +58,38 @@ public class ByteBuddyTest {
                 .sayHelloFoo();
 
         assertEquals(r, Bar.sayHelloBar());
+    }
+
+    @Test
+    public void test_define_method_and_field() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+        Class<?> type = new ByteBuddy()
+                .subclass(Object.class)
+                .name("MyClassName")
+                .defineMethod("custom", String.class, Modifier.PUBLIC)
+                .intercept(MethodDelegation.to(Bar.class))
+                .defineField("x", String.class, Modifier.PUBLIC)
+                .make()
+                .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                .getLoaded();
+
+        Method m = type.getDeclaredMethod("custom", (Class<?>) null);
+        assertEquals(m.invoke(type.newInstance()), Bar.sayHelloBar());
+        assertNotNull(type.getDeclaredField("x"));
+    }
+
+    @Test
+    public void test_redefine_existing_class() {
+        ByteBuddyAgent.install();
+        new ByteBuddy()
+                .redefine(Foo.class)
+                .method(named("sayHelloFoo"))
+                .intercept(FixedValue.value("Hello Foo Redefined"))
+                .make()
+                .load(Foo.class.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
+
+        Foo f = new Foo();
+
+        assertEquals(f.sayHelloFoo(), "Hello Foo Redefined");
     }
 }
 
