@@ -1,5 +1,6 @@
 package me.coconan.bytebuddy;
 
+import com.mysql.cj.jdbc.ClientPreparedStatement;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
@@ -10,6 +11,7 @@ import net.bytebuddy.utility.JavaModule;
 import java.lang.instrument.Instrumentation;
 
 public class PinpointBootStrap {
+    ClientPreparedStatement cps;
     public static void premain(String agentArgs, Instrumentation inst) {
         //构建一个转换器
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, javaModule) -> builder

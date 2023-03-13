@@ -5,7 +5,7 @@ import java.sql.*;
 public class JdbcTest {
     private static final String URL = "jdbc:mysql://mysql-test:3306/bank?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
     private static final String USER_NAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "hello123";
 
     public static void main(String[] args) throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");

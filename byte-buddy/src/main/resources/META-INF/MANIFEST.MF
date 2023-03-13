@@ -1,0 +1,4 @@
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Premain-Class: me.coconan.bytebuddy.PinpointBootStrap
+Main-Class: me.coconan.bytebuddy.JdbcTest

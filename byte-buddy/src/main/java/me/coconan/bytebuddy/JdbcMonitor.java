@@ -1,5 +1,6 @@
 package me.coconan.bytebuddy;
 
+import com.mysql.cj.PreparedQuery;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
 import net.bytebuddy.implementation.bind.annotation.This;
@@ -16,13 +17,14 @@ public class JdbcMonitor {
         Object call = null;
         try {
             call = callable.call();
-            System.out.println("------------------------------拦截器打印开始--------------------------");
+            System.out.println("--拦截器打印开始--");
             System.out.println("这是拦截器打印的：" + thisObject);
             System.out.println("开始获取sql");
             Class<?> aClass = thisObject.getClass();
-            Method asSql = aClass.getMethod("asSql");
-            Object sql = asSql.invoke(thisObject);
-            System.out.println("*******解析出来的sql为：" + sql);
+            System.out.println(aClass);
+            Method getQuery = aClass.getMethod("getQuery");
+            Object query = getQuery.invoke(thisObject);
+            System.out.println("*******解析出来的sql为：" + ((PreparedQuery) query).asSql());
 
             System.out.println("这是拦截器拦截的结果集：" + call);
             if (call instanceof ResultSet) {
@@ -32,13 +34,13 @@ public class JdbcMonitor {
 
 
                 while (resultSet.next()) {
-                    System.out.println("------------------------拦截器----------------------------");
+                    System.out.println("--拦截器--");
                     System.out.println("**********id:" + resultSet.getInt("id"));
                     System.out.println("**********number:" + resultSet.getInt("number"));
                     System.out.println("**********balance:" + resultSet.getBigDecimal("balance"));
 
                     //获取对应的字段索引
-                    int waitUpdateColumnIndex = resultSet.findColumn("test1");
+                    int waitUpdateColumnIndex = resultSet.findColumn("number");
                     //计算对应数据索引
                     int waitUpdateColumnIndexUpdate = waitUpdateColumnIndex - 1;
                     //internalRowData
@@ -56,23 +58,23 @@ public class JdbcMonitor {
                                 //获取对应字段的数据
                                 byte[] rowDatum = rowData[waitUpdateColumnIndexUpdate];
                                 System.out.println("初始值：" + new String(rowDatum, StandardCharsets.UTF_8));
-                                System.out.println("修改值为：皇甫科星");
+                                System.out.println("修改值为：" + 100 );
                                 //修改数据
-                                rowData[waitUpdateColumnIndexUpdate] = "皇甫科星".getBytes(StandardCharsets.UTF_8);
+                                rowData[waitUpdateColumnIndexUpdate] = "100".getBytes(StandardCharsets.UTF_8);
                                 internalRowDataFieldChild.set(thisRowDataObject, rowData);
-                                System.out.println("------------------修改数据成功-------------------");
+                                System.out.println("--修改数据成功--");
                             }
                         }, internalRowDataFieldChild -> "internalRowData".equals(internalRowDataFieldChild.getName()));
                     }, field -> "thisRow".equals(field.getName()));
 
-                    System.out.println("-----------------------拦截器-----------------------------");
+                    System.out.println("--拦截器--");
                 }
                 //回归对应的光标
                 resultSet.absolute(0);
 
             }
 
-            System.out.println("------------------------------拦截器打印结束--------------------------");
+            System.out.println("--拦截器打印结束--");
 
         } catch (Exception e) {
             e.printStackTrace();

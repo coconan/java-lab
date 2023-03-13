@@ -72,7 +72,7 @@ public class ByteBuddyTest {
                 .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
                 .getLoaded();
 
-        Method m = type.getDeclaredMethod("custom", (Class<?>) null);
+        Method m = type.getDeclaredMethod("custom", null);
         assertEquals(m.invoke(type.newInstance()), Bar.sayHelloBar());
         assertNotNull(type.getDeclaredField("x"));
     }
