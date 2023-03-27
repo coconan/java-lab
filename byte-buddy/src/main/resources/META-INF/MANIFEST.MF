@@ -1,4 +1,5 @@
+Agent-Class: me.coconan.bytebuddy.Agent
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
-Premain-Class: me.coconan.bytebuddy.PinpointBootStrap
-Main-Class: me.coconan.bytebuddy.JdbcTest
+Premain-Class: me.coconan.bytebuddy.PreMain
+Main-Class: me.coconan.bytebuddy.Application

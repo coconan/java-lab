@@ -1,6 +1,5 @@
 package me.coconan.bytebuddy;
 
-import com.mysql.cj.jdbc.ClientPreparedStatement;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
@@ -10,15 +9,11 @@ import net.bytebuddy.utility.JavaModule;
 
 import java.lang.instrument.Instrumentation;
 
-public class PinpointBootStrap {
-    ClientPreparedStatement cps;
+public class PreMain {
     public static void premain(String agentArgs, Instrumentation inst) {
-        //构建一个转换器
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, javaModule) -> builder
-                // 拦截静态而且前缀为test的方法
-                .method(ElementMatchers.named("executeQuery"))
-                // 委托
-                .intercept(MethodDelegation.to(JdbcMonitor.class));
+                .method(ElementMatchers.named("getResultSet"))
+                .intercept(MethodDelegation.to(Interceptor.class));
 
         AgentBuilder.Listener listener = new AgentBuilder.Listener() {
 
@@ -50,12 +45,9 @@ public class PinpointBootStrap {
 
         new AgentBuilder
                 .Default()
-                // 指定需要拦截的类
-                .type(ElementMatchers.named("com.mysql.cj.jdbc.ClientPreparedStatement"))
-                //添加一个转换器
+                .type(ElementMatchers.named("com.mysql.jdbc.JDBC42PreparedStatement"))
                 .transform(transformer)
                 .with(listener)
-                //将上述的转换安装到javaagent的介入器
                 .installOn(inst);
 
     }

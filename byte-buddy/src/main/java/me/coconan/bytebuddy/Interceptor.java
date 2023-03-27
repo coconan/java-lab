@@ -1,17 +1,16 @@
 package me.coconan.bytebuddy;
 
-import com.mysql.cj.PreparedQuery;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
 import net.bytebuddy.implementation.bind.annotation.This;
 import org.springframework.util.ReflectionUtils;
 
-import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.concurrent.Callable;
 
-public class JdbcMonitor {
+public class Interceptor {
     @RuntimeType
     public static Object intercept(@This Object thisObject, @SuperCall Callable<?> callable) {
         Object call = null;
@@ -22,14 +21,12 @@ public class JdbcMonitor {
             System.out.println("开始获取sql");
             Class<?> aClass = thisObject.getClass();
             System.out.println(aClass);
-            Method getQuery = aClass.getMethod("getQuery");
-            Object query = getQuery.invoke(thisObject);
-            System.out.println("*******解析出来的sql为：" + ((PreparedQuery) query).asSql());
+            System.out.println("*******解析出来的sql为：" + ((com.mysql.jdbc.PreparedStatement) thisObject).asSql());
 
             System.out.println("这是拦截器拦截的结果集：" + call);
             if (call instanceof ResultSet) {
                 ResultSet resultSet = (ResultSet) call;
-                freeFromImprisonment(resultSet);
+                updatable(resultSet);
                 System.out.println("修改后的类型:" + resultSet.getType());
 
 
@@ -40,7 +37,7 @@ public class JdbcMonitor {
                     System.out.println("**********balance:" + resultSet.getBigDecimal("balance"));
 
                     //获取对应的字段索引
-                    int waitUpdateColumnIndex = resultSet.findColumn("number");
+                    int waitUpdateColumnIndex = resultSet.findColumn("balance");
                     //计算对应数据索引
                     int waitUpdateColumnIndexUpdate = waitUpdateColumnIndex - 1;
                     //internalRowData
@@ -58,9 +55,9 @@ public class JdbcMonitor {
                                 //获取对应字段的数据
                                 byte[] rowDatum = rowData[waitUpdateColumnIndexUpdate];
                                 System.out.println("初始值：" + new String(rowDatum, StandardCharsets.UTF_8));
-                                System.out.println("修改值为：" + 100 );
+                                System.out.println("修改值为：" + new BigDecimal("10000.89"));
                                 //修改数据
-                                rowData[waitUpdateColumnIndexUpdate] = "100".getBytes(StandardCharsets.UTF_8);
+                                rowData[waitUpdateColumnIndexUpdate] = "10000.89".getBytes(StandardCharsets.UTF_8);
                                 internalRowDataFieldChild.set(thisRowDataObject, rowData);
                                 System.out.println("--修改数据成功--");
                             }
@@ -87,7 +84,7 @@ public class JdbcMonitor {
      *
      * @param resultSet 结果集
      */
-    protected static void freeFromImprisonment(ResultSet resultSet) {
+    protected static void updatable(ResultSet resultSet) {
         //修改可翻滚
         ReflectionUtils.doWithFields(resultSet.getClass(), field -> {
             field.setAccessible(true);
