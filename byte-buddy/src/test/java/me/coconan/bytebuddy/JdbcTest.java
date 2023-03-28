@@ -2,14 +2,11 @@ package me.coconan.bytebuddy;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class JdbcTest {
-    private static final String URL = "jdbc:mysql://mysql-test:3306/bank?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
-    private static final String USER_NAME = "root";
-    private static final String PASSWORD = "root";
-
     @Test
-    public void test() throws Exception {
-
+    public void test_jdbc_interception() throws Exception {
         DemoDao demoDao = new DemoDao();
         for (Account account : demoDao.getAccount()) {
             System.out.println("----------------------------------------------------");
@@ -17,6 +14,7 @@ public class JdbcTest {
             System.out.println("number: " + account.getNumber());
             System.out.println("balance: " + account.getBalance());
             System.out.println("----------------------------------------------------");
+            assertEquals("10000.89", account.getBalance().toString());
         }
     }
 }

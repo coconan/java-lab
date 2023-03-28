@@ -78,7 +78,7 @@ public class ByteBuddyTest {
     }
 
     @Test
-    public void test_redefine_existing_class() {
+    public void test_redefine_existing_class() throws Exception {
         ByteBuddyAgent.install();
         new ByteBuddy()
                 .redefine(Foo.class)
