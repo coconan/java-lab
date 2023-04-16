@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class HackTest {
+public class BarTest {
     @Test
-    public void test_phase() {
-
+    public void test_greet() {
+        assertEquals("hello, maven", new Bar().greet());
     }
 }

@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class HackTest {
+public class FooTest {
     @Test
-    public void test_phase() {
-
+    public void test_secret() {
+        assertEquals(42, new Foo().secret());
     }
 }
