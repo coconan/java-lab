@@ -20,6 +20,12 @@
             <version>5.8.1</version>
         </dependency>
         <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.9.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
@@ -51,13 +57,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>me.coconan.bytebuddy.Application</mainClass>
+                            <mainClass>me.coconan.bytebuddy.TestMain</mainClass>
                         </manifest>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <descriptor>src/main/assembly.xml</descriptor>
                 </configuration>
             </plugin>
             <plugin>

@@ -2,4 +2,4 @@ Agent-Class: me.coconan.bytebuddy.Agent
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
 Premain-Class: me.coconan.bytebuddy.PreMain
-Main-Class: me.coconan.bytebuddy.Application
+Main-Class: me.coconan.bytebuddy.TestMain
