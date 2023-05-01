@@ -1,2 +1,3 @@
 - [kafka docker setup](https://www.baeldung.com/kafka-docker-setup)
 - https://www.baeldung.com/spring-kafka
+- https://developer.confluent.io/get-started/java/
