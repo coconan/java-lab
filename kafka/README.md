@@ -2,3 +2,4 @@
 - https://www.baeldung.com/spring-kafka
 - https://developer.confluent.io/get-started/java/
 - https://developer.confluent.io/
+- https://developer.confluent.io/100-days-of-code/
