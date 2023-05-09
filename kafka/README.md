@@ -4,3 +4,4 @@
 - https://developer.confluent.io/
 - https://developer.confluent.io/100-days-of-code/
 - https://developer.confluent.io/learn-kafka/apache-kafka/events/
+- https://developer.confluent.io/learn-kafka/apache-kafka/topics/
