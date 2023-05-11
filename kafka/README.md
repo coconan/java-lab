@@ -6,3 +6,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/events/
 - https://developer.confluent.io/learn-kafka/apache-kafka/topics/
 - https://developer.confluent.io/learn-kafka/apache-kafka/partitions/
+- https://developer.confluent.io/learn-kafka/apache-kafka/brokers/
