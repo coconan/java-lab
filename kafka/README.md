@@ -8,3 +8,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/partitions/
 - https://developer.confluent.io/learn-kafka/apache-kafka/brokers/
 - https://developer.confluent.io/learn-kafka/apache-kafka/replication/
+- https://developer.confluent.io/learn-kafka/apache-kafka/producers/
