@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 public interface AddressMapper {
 
-	@Insert("Insert into address (streetAddress,personId) values(#{streetAddress},#{personId})")
+	@Insert("Insert into address (streetAddress,personId) values(#{streetAddress},#{personIdAsString})")
 	@Options(useGeneratedKeys = true, flushCache = true)
 	public Integer saveAddress(Address address);
 

@@ -9,17 +9,23 @@ public class Address {
 	public Address() {
 	}
 
+	public Address(String streetAddress, Integer personId) {
+		this.streetAddress = streetAddress;
+		this.personId = personId;
+	}
+
 	public Integer getPersonId() {
 		return personId;
+	}
+
+	public String getPersonIdAsString() {
+		return String.valueOf(personId);
 	}
 
 	public void setPersonId(Integer personId) {
 		this.personId = personId;
 	}
 
-	public Address(String streetAddress) {
-		this.streetAddress = streetAddress;
-	}
 
 	public Person getPerson() {
 		return person;

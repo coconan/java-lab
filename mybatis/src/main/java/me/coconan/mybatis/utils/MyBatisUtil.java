@@ -80,10 +80,15 @@ public class MyBatisUtil {
 
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			PersonMapper pm = session.getMapper(PersonMapper.class);
+			AddressMapper am = session.getMapper(AddressMapper.class);
 
 			System.out.println("\nsavePerson:");
 			pm.save(new Person(1, "alex"));
 			pm.save(new Person(2, "brian"));
+
+			System.out.println("\nsaveAddress");
+			am.saveAddress(new Address("Azeroth", 1));
+			am.saveAddress(new Address("Teyvat", 2));
 
 			System.out.println("\ngetAllPerson:");
 			Map<Integer, Person> personMap = pm.getAllPerson();
