@@ -13,3 +13,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/ecosystem/
 - https://developer.confluent.io/learn-kafka/apache-kafka/kafka-connect/
 - https://developer.confluent.io/learn-kafka/apache-kafka/kafka-streams/
+- https://developer.confluent.io/learn-kafka/apache-kafka/ksqldb/
