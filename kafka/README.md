@@ -15,3 +15,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/kafka-streams/
 - https://developer.confluent.io/learn-kafka/apache-kafka/ksqldb/
 - https://developer.confluent.io/learn/kraft/
+- https://developer.confluent.io/tutorials/kafka-console-consumer-read-specific-offsets-partitions/confluent.html
