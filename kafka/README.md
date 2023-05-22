@@ -16,3 +16,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/ksqldb/
 - https://developer.confluent.io/learn/kraft/
 - https://developer.confluent.io/tutorials/kafka-console-consumer-read-specific-offsets-partitions/confluent.html
+- https://developer.confluent.io/learn-kafka/apache-kafka/schema-registry/
