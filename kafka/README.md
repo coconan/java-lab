@@ -18,3 +18,5 @@
 - https://developer.confluent.io/tutorials/kafka-console-consumer-read-specific-offsets-partitions/confluent.html
 - https://developer.confluent.io/learn-kafka/apache-kafka/schema-registry/
 - https://www.confluent.io/blog/avro-kafka-data/
+- https://developer.confluent.io/learn-kafka/kafka-streams/get-started/
+
