@@ -19,4 +19,4 @@
 - https://developer.confluent.io/learn-kafka/apache-kafka/schema-registry/
 - https://www.confluent.io/blog/avro-kafka-data/
 - https://developer.confluent.io/learn-kafka/kafka-streams/get-started/
-
+- https://developer.confluent.io/learn-kafka/kafka-streams/basic-operations/
