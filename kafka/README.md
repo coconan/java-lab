@@ -20,3 +20,4 @@
 - https://www.confluent.io/blog/avro-kafka-data/
 - https://developer.confluent.io/learn-kafka/kafka-streams/get-started/
 - https://developer.confluent.io/learn-kafka/kafka-streams/basic-operations/
+- https://developer.confluent.io/learn-kafka/kafka-streams/ktable/
