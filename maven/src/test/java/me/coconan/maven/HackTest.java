@@ -9,4 +9,9 @@ public class HackTest {
     public void test_phase() {
 
     }
+
+    @Test
+    public void test_validation() {
+
+    }
 }

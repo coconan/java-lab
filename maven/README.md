@@ -11,3 +11,8 @@
 ## notes
 - `<packaging>pom</packaging>`
 - `<relativePath/>`
+
+## commands
+- `source ~/scripts/change-java-8.sh`
+- `mvn clean && mvn test-compile && mvn package -Dmaven.test.skip=true`
+- `java -jar target/maven-1.0.0-SNAPSHOT-fat-tests.jar`
