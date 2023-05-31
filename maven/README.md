@@ -17,3 +17,6 @@
 - `source ~/scripts/change-java-8.sh`
 - `mvn clean && mvn test-compile && mvn package -Dmaven.test.skip=true`
 - `java -jar target/maven-1.0.0-SNAPSHOT-fat-tests.jar`
+
+- `mvn test -Dtest=BarTest`
+- `mvn test -Dtest=BarTest#test_greet`
