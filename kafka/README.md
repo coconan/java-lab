@@ -23,3 +23,4 @@
 - https://developer.confluent.io/learn-kafka/kafka-streams/ktable/
 - https://developer.confluent.io/learn-kafka/kafka-streams/serialization/
 - https://developer.confluent.io/learn-kafka/kafka-streams/joins/
+- https://developer.confluent.io/learn-kafka/kafka-streams/stateful-operations/
