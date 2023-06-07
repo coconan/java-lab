@@ -24,3 +24,4 @@
 - https://developer.confluent.io/learn-kafka/kafka-streams/serialization/
 - https://developer.confluent.io/learn-kafka/kafka-streams/joins/
 - https://developer.confluent.io/learn-kafka/kafka-streams/stateful-operations/
+- https://developer.confluent.io/tutorials/create-stateful-aggregation-count/kstreams.html
