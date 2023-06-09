@@ -20,3 +20,4 @@
 
 - `mvn test -Dtest=BarTest`
 - `mvn test -Dtest=BarTest#test_greet`
+- `mvn test -Dtest=BarTest -DfailIfNoTests=false -pl foo-module -am`
