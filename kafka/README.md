@@ -26,3 +26,4 @@
 - https://developer.confluent.io/learn-kafka/kafka-streams/stateful-operations/
 - https://developer.confluent.io/tutorials/create-stateful-aggregation-count/kstreams.html
 - https://developer.confluent.io/tutorials/merge-many-streams-into-one-stream/confluent.html
+- https://developer.confluent.io/tutorials/dynamic-output-topic/kstreams.html
