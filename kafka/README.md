@@ -27,3 +27,4 @@
 - https://developer.confluent.io/tutorials/create-stateful-aggregation-count/kstreams.html
 - https://developer.confluent.io/tutorials/merge-many-streams-into-one-stream/confluent.html
 - https://developer.confluent.io/tutorials/dynamic-output-topic/kstreams.html
+- https://developer.confluent.io/tutorials/transform-a-stream-of-events/kstreams.html
