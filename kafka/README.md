@@ -29,3 +29,4 @@
 - https://developer.confluent.io/tutorials/dynamic-output-topic/kstreams.html
 - https://developer.confluent.io/tutorials/transform-a-stream-of-events/kstreams.html
 - https://developer.confluent.io/learn-kafka/kafka-streams/windowing/
+- https://developer.confluent.io/tutorials/create-session-windows/confluent.html
