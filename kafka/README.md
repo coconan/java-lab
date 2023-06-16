@@ -32,3 +32,4 @@
 - https://developer.confluent.io/tutorials/create-session-windows/confluent.html
 - https://developer.confluent.io/learn-kafka/kafka-streams/time-concepts/
 - https://developer.confluent.io/learn-kafka/kafka-streams/testing/
+- https://developer.confluent.io/learn-kafka/ksqldb/interacting-with-ksqldb/
