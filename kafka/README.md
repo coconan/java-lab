@@ -34,3 +34,4 @@
 - https://developer.confluent.io/learn-kafka/kafka-streams/testing/
 - https://developer.confluent.io/learn-kafka/ksqldb/interacting-with-ksqldb/
 - https://developer.confluent.io/learn-kafka/ksqldb/import-export-data-with-ksqldb/
+- https://developer.confluent.io/learn-kafka/ksqldb/hands-on-filter-data/
