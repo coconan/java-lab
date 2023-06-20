@@ -35,3 +35,4 @@
 - https://developer.confluent.io/learn-kafka/ksqldb/interacting-with-ksqldb/
 - https://developer.confluent.io/learn-kafka/ksqldb/import-export-data-with-ksqldb/
 - https://developer.confluent.io/learn-kafka/ksqldb/hands-on-filter-data/
+- https://developer.confluent.io/learn-kafka/ksqldb/lookups-and-joins/
