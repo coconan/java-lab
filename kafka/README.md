@@ -37,3 +37,4 @@
 - https://developer.confluent.io/learn-kafka/ksqldb/hands-on-filter-data/
 - https://developer.confluent.io/learn-kafka/ksqldb/lookups-and-joins/
 - https://docs.ksqldb.io/en/latest/developer-guide/ksqldb-clients/java-client
+- https://docs.ksqldb.io/en/latest/tutorials/materialized/
