@@ -39,3 +39,4 @@
 - https://docs.ksqldb.io/en/latest/developer-guide/ksqldb-clients/java-client
 - https://docs.ksqldb.io/en/latest/tutorials/materialized/
 - https://developer.confluent.io/learn-kafka/ksqldb/convert-data-formats/
+- https://developer.confluent.io/learn-kafka/ksqldb/lambda-functions-arrays-and-maps/
